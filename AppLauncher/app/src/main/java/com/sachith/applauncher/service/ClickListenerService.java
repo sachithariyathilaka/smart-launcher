@@ -4,5 +4,5 @@ import com.sachith.applauncher.model.Apps;
 
 public interface ClickListenerService {
 
-    void openApp(Apps app);
+    void onAppClick(Apps app);
 }

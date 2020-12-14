@@ -34,7 +34,7 @@ data class GridViewAdapter(private var list: List<Apps>, private var context: Co
         name.text = list[position].name
         Glide.with(context).load(list[position].icon).into(icon)
         view.setOnClickListener{
-            listener.openApp(list[position])
+            listener.onAppClick(list[position])
         }
         return view
     }

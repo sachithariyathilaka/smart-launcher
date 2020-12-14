@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorLightGreen">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/colorLightGreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.014">
+
+        <ImageButton
+            android:id="@+id/closeBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/close"
+            android:layout_gravity="right"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/appText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/header"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorSilver"/>
+
+        <GridView
+            android:id="@+id/appGrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="64dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:numColumns="4"/>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

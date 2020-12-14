@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppLauncher">
         <activity
+            android:name=".activity.SettingsActivity"
+            android:theme="@style/Theme.AppLauncher.wallpaper">
+
+        </activity>
+        <activity
             android:name=".activity.AppListActivity"
             android:launchMode="singleTask"
             android:stateNotNeeded="true"

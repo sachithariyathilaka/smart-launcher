@@ -2,4 +2,8 @@
     <string name="app_name">App Launcher</string>
     <string name="name">Name</string>
     <string name="open">Open App Launcher</string>
+    <string name="ascOrder">Sort A - Z</string>
+    <string name="disableApps">Disable Apps</string>
+    <string name="disable">Add</string>
+    <string name="header">Click App to Disable</string>
 </resources>
