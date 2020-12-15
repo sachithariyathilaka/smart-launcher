@@ -2,11 +2,17 @@ package com.sachith.applauncher.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.*
+import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
+import androidx.core.graphics.drawable.DrawableCompat
 import com.bumptech.glide.Glide
 import com.sachith.applauncher.R
 import com.sachith.applauncher.model.Apps
@@ -26,6 +32,7 @@ data class GridViewAdapter(private var list: List<Apps>, private var context: Co
         return list.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View = View.inflate(context, R.layout.app_item,null)
@@ -33,6 +40,9 @@ data class GridViewAdapter(private var list: List<Apps>, private var context: Co
         val name = view.findViewById<TextView>(R.id.appName)
         name.text = list[position].name
         Glide.with(context).load(list[position].icon).into(icon)
+        if(list[position].disable){
+            list[position].icon.colorFilter = BlendModeColorFilter(Color.GRAY, BlendMode.COLOR)
+        }
         view.setOnClickListener{
             listener.onAppClick(list[position])
         }

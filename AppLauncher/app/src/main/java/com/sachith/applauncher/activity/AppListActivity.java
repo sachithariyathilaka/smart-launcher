@@ -1,6 +1,7 @@
 package com.sachith.applauncher.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.room.Room;
 
 import android.annotation.SuppressLint;
@@ -18,6 +19,7 @@ import com.sachith.applauncher.database.DbConnection;
 import com.sachith.applauncher.model.AppPackage;
 import com.sachith.applauncher.model.Apps;
 import com.sachith.applauncher.service.ClickListenerService;
+import com.sachith.popupsnackbar.PopupSnackbar;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,7 +42,12 @@ public class AppListActivity extends AppCompatActivity implements ClickListenerS
 
     @Override
     public void onAppClick(Apps app) {
-        startActivity(new Intent((packageManager.getLaunchIntentForPackage(app.getLabel().toString()))));
+        if(app.getDisable()){
+            ConstraintLayout view = findViewById(R.id.activity_app_list);
+            new PopupSnackbar().snackBar(this,view,"This App is Disabled", 1);
+        } else{
+            startActivity(new Intent((packageManager.getLaunchIntentForPackage(app.getLabel().toString()))));
+        }
     }
 
     //<editor-fold desc="Private Methods">
@@ -100,13 +107,14 @@ public class AppListActivity extends AppCompatActivity implements ClickListenerS
             newApp.setLabel(resolveInfo.activityInfo.packageName);
             newApp.setName(resolveInfo.loadLabel(packageManager));
             newApp.setIcon(resolveInfo.loadIcon(packageManager));
+            newApp.setDisable(false);
             appList.add(newApp);
         }
 
         for(int j = 0; j<disabledApps.size(); j++){
             for(int k=0; k<appList.size(); k++){
                 if(appList.get(k).getLabel().equals(disabledApps.get(j).getName())){
-                    appList.remove(appList.get(k));
+                    appList.get(k).setDisable(true);
                 }
             }
         }

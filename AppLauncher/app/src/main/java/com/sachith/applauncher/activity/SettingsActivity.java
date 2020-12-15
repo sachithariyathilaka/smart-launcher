@@ -44,12 +44,16 @@ public class SettingsActivity extends AppCompatActivity implements ClickListener
 
     @Override
     public void onAppClick(Apps app) {
-        DbConnection database = Room.databaseBuilder(getApplicationContext(), DbConnection.class, "Apps").allowMainThreadQueries().build();
-        database.getAppDao().insert(new AppPackage((String) app.getLabel()));
-        disableApps.dismiss();
-        ConstraintLayout view = findViewById(R.id.activity_setting);
-        new PopupSnackbar().snackBar(this, view, "App Disable Successful", 0);
-        loadDisabledApps();
+        if(app.getDisable()){
+            ConstraintLayout view = findViewById(R.id.activity_app_list);
+            new PopupSnackbar().snackBar(this,view,"This App is Disabled", 1);
+        } else{
+            DbConnection database = Room.databaseBuilder(getApplicationContext(), DbConnection.class, "Apps").allowMainThreadQueries().build();
+            database.getAppDao().insert(new AppPackage((String) app.getLabel()));
+            ConstraintLayout view = findViewById(R.id.activity_setting);
+            new PopupSnackbar().snackBar(this, view, "App Disable Successful", 0);
+            loadDisabledApps();
+        }
     }
 
     //<editor-fold desc="Private Methods">
@@ -111,7 +115,7 @@ public class SettingsActivity extends AppCompatActivity implements ClickListener
         for(int j = 0; j<disabledApps.size(); j++){
             for(int k=0; k<appList.size(); k++){
                 if(appList.get(k).getLabel().equals(disabledApps.get(j).getName())){
-                    appList.remove(appList.get(k));
+                    appList.get(k).setDisable(true);
                 }
             }
         }
@@ -127,10 +131,6 @@ public class SettingsActivity extends AppCompatActivity implements ClickListener
                 disableApps.dismiss();
             }
         });
-
-        /* //Send mobile verification
-        sendOTPDialog.send.setOnClickListener { sendOTP(user)
-        }*/
     }
 
     //Load apps from system
@@ -146,6 +146,7 @@ public class SettingsActivity extends AppCompatActivity implements ClickListener
             newApp.setLabel(resolveInfo.activityInfo.packageName);
             newApp.setName(resolveInfo.loadLabel(packageManager));
             newApp.setIcon(resolveInfo.loadIcon(packageManager));
+            newApp.setDisable(false);
             appList.add(newApp);
         }
     }

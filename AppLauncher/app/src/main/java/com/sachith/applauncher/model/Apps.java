@@ -6,6 +6,7 @@ public class Apps {
     CharSequence label;
     CharSequence name;
     Drawable icon;
+    Boolean isDisable;
 
     public CharSequence getLabel() {
         return label;
@@ -29,6 +30,14 @@ public class Apps {
 
     public void setIcon(Drawable icon) {
         this.icon = icon;
+    }
+
+    public Boolean getDisable() {
+        return isDisable;
+    }
+
+    public void setDisable(Boolean disable) {
+        isDisable = disable;
     }
 }
 
