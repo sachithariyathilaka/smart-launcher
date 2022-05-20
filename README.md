@@ -2,4 +2,4 @@
 Android custom app launcher
 
 # Technologies
-Java, Android Studio
+Java, Kotlin, Android Studio
