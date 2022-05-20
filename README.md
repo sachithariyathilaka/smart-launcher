@@ -1,2 +1,5 @@
 # Custom App Launcher
-This is android custom app launcher using Java
+Android custom app launcher
+
+# Technologies
+Java, Android Studio
