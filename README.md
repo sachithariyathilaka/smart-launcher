@@ -14,6 +14,6 @@ Android based custom application launcher library project.
   * Date: 2022/05/20
   * Module: App Launcher Library
   * Changes
-   * Custom app launcher implemented.
-   * Application sort function implemented.
-   * Application disable/enable function implemented.
+    * Custom app launcher implemented.
+    * Application sort function implemented.
+    * Application disable/enable function implemented.
