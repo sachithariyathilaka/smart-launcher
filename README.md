@@ -1,6 +1,9 @@
 # App Launcher Library
 Android based custom application launcher library project.
 
+* ### Configuration
+  * https://sachithariyathilaka.medium.com/android-custom-application-launcher-670c4981b626
+
 * ### Technologies
   * Java
   * Kotlin
