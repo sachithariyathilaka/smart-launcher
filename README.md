@@ -1,5 +1,5 @@
 # App Launcher Library
-Android based custom application launcher library project.
+Android based custom application launcher application.
 
 * ### Configuration
   * https://sachithariyathilaka.medium.com/android-custom-application-launcher-670c4981b626
