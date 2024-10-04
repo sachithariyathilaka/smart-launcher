@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App Launcher</string>
+    <string name="app_name">Smart Launcher</string>
     <string name="name">Name</string>
     <string name="open">Open App Launcher</string>
     <string name="ascOrder">Sort A - Z</string>

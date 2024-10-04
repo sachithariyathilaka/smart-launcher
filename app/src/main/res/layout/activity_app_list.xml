@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,36 +21,38 @@
 
         <TextView
             android:id="@+id/sort"
-            android:text="@string/ascOrder"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:layout_gravity="left"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/ascOrder"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/settings"
-            android:text="@string/disableApps"
-            android:textSize="16sp"
-            android:layout_marginRight="24dp"
-            android:layout_gravity="right"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="24dp"
+            android:text="@string/disableApps"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="RtlHardcoded" />
 
 
         <GridView
             android:id="@+id/appGrid"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="64dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="64dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:numColumns="4"/>
+            android:numColumns="4" />
 
     </androidx.cardview.widget.CardView>
 

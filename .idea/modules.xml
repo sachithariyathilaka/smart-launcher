@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/App_Launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/App_Launcher.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App_Launcher.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App_Launcher.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App_Launcher.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App_Launcher.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App_Launcher.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App_Launcher.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App_Launcher.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App_Launcher.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/App-launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/App-launcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App-launcher.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App-launcher.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App-launcher.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App-launcher.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App-launcher.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App-launcher.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/App-launcher.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/App-launcher.app.unitTest.iml" />
     </modules>
   </component>
 </project>

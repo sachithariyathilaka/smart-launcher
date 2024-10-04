@@ -27,17 +27,23 @@ import io.github.sachithariyathilaka.model.AppPackage;
 import io.github.sachithariyathilaka.model.Apps;
 import io.github.sachithariyathilaka.service.ClickListenerService;
 
+/**
+ * App list activity class.
+ *
+ * @author  Sachith Ariyathilaka
+ * @version 1.0.0
+ * @since   2024/10/04
+ */
 public class AppListActivity extends AppCompatActivity implements ClickListenerService {
 
     private PackageManager packageManager;
-    private List<Apps> appList;
+    private List<Apps> apps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_list);
 
-        //Setup UI
         init();
     }
 
@@ -51,51 +57,39 @@ public class AppListActivity extends AppCompatActivity implements ClickListenerS
         }
     }
 
-    //<editor-fold desc="Private Methods">
-
-    //Setup UI
+    /**
+     * Initiate UI.
+     */
     private void init() {
-        //Load apps from system
         loadApps();
-
-        //Sort apps
         sortApps();
-
-        //Go to Settings
         goToSettings();
     }
 
-    //Go to Settings
+    /**
+     * Go to settings.
+     */
     private void goToSettings() {
-        findViewById(R.id.settings).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AppListActivity.this,SettingsActivity.class));
-            }
-        });
+        findViewById(R.id.settings).setOnClickListener(v -> startActivity(new Intent(AppListActivity.this,SettingsActivity.class)));
     }
 
-    //Sort apps
+    /**
+     * Sort apps.
+     */
     private void sortApps() {
         TextView sortText = findViewById(R.id.sort);
-        sortText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Collections.sort(appList, new Comparator<Apps>() {
-                    @Override
-                    public int compare(Apps app1, Apps app2) {
-                        return String.valueOf(app1.getName()).compareTo(String.valueOf(app2.getName()));
-                    }
-                });
-                displayApps();
-            }
+        sortText.setOnClickListener(v -> {
+            apps.sort(Comparator.comparing((Apps app) -> String.valueOf(app.getName())));
+            displayApps();
         });
     }
 
-    //Load apps from system
+    /**
+     * Load apps.
+     */
     private void loadApps() {
         packageManager = getPackageManager();
-        appList = new ArrayList<>();
+        apps = new ArrayList<>();
 
         Intent i = new Intent(Intent.ACTION_MAIN, null);
         i.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -103,33 +97,30 @@ public class AppListActivity extends AppCompatActivity implements ClickListenerS
         @SuppressLint("QueryPermissionsNeeded") List<ResolveInfo> availableActivities = packageManager.queryIntentActivities(i,0);
         DbConnection database = Room.databaseBuilder(getApplicationContext(), DbConnection.class, "Apps").allowMainThreadQueries().build();
         List<AppPackage> disabledApps = database.getAppDao().getData();
+
         for(ResolveInfo resolveInfo: availableActivities){
             Apps newApp = new Apps();
             newApp.setLabel(resolveInfo.activityInfo.packageName);
             newApp.setName(resolveInfo.loadLabel(packageManager));
             newApp.setIcon(resolveInfo.loadIcon(packageManager));
             newApp.setDisable(false);
-            appList.add(newApp);
+            apps.add(newApp);
         }
 
-        for(int j = 0; j<disabledApps.size(); j++){
-            for(int k=0; k<appList.size(); k++){
-                if(appList.get(k).getLabel().equals(disabledApps.get(j).getName())){
-                    appList.get(k).setDisable(true);
-                }
-            }
-        }
+        for(int j = 0; j<disabledApps.size(); j++)
+            for(int k=0; k<apps.size(); k++)
+                if(apps.get(k).getLabel().equals(disabledApps.get(j).getName()))
+                    apps.get(k).setDisable(true);
 
-        //Display apps in grid view
         displayApps();
     }
 
-    //Display apps in grid view
+    /**
+     * Display apps.
+     */
     private void displayApps() {
-        GridViewAdapter gridViewAdapter = new GridViewAdapter(appList,this,this);
+        GridViewAdapter gridViewAdapter = new GridViewAdapter(apps,this,this);
         GridView appsView = findViewById(R.id.appGrid);
         appsView.setAdapter(gridViewAdapter);
     }
-
-    //</editor-fold>
 }
